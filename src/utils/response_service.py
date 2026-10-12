@@ -63,7 +63,7 @@ class ResponseService:
         lines = [
             messages.get(
                 "leaderboard.row",
-                medal=MEDALS.get(rank, f"`{rank}.`"),
+                rank=MEDALS.get(rank, str(rank)),
                 name=name,
                 count=count,
             )
@@ -120,10 +120,10 @@ class ResponseService:
         user_id: int,
         guild_name: str,
         count: int,
-        revives_left: int,
         missed_day: date,
     ) -> None:
-        """Send the revive offer embed together with its revive button."""
+        """Send the revive offer embed together with its matching revive button."""
+        # group() picks one variant; its button label travels with it.
         text = messages.group("offer_revive", guild=guild_name, count=count)
         await self.send(
             target,
@@ -132,7 +132,7 @@ class ResponseService:
                 description=text["body"],
                 color=discord.Color.red(),
             ),
-            view=build_revive_view(guild_id, user_id, missed_day, revives_left),
+            view=build_revive_view(guild_id, user_id, missed_day, text["button"]),
         )
 
     async def streak_lost(
@@ -164,7 +164,6 @@ class ResponseService:
             broken.streak.user_id,
             guild_name,
             broken.count,
-            broken.revives_left,
             broken.missed_day,
         )
 

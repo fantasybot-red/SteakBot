@@ -115,7 +115,6 @@ class Debug(commands.Cog, name="debug"):
                 user.id,
                 guild_name,
                 SAMPLE_STREAK,
-                SAMPLE_REVIVES_LEFT,
                 SAMPLE_DAY,
             )
         elif name == "streak_lost":

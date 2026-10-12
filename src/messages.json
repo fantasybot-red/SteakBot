@@ -8,7 +8,18 @@
   "offer_revive": [
     {
       "title": "💔 Bạn đã bỏ lỡ một ngày!",
-      "body": "Chuỗi của bạn ở **${guild}** (🔥 **${count}** ngày) đang gặp nguy hiểm!\n\nBạn có thể dùng một lượt hồi sinh để cứu nó. Bấm nút bên dưới — nếu không chuỗi sẽ bị reset về 0."
+      "body": "Chuỗi của bạn ở **${guild}** (🔥 **${count}** ngày) đang gặp nguy hiểm!\n\nBạn có thể dùng một lượt hồi sinh để cứu nó. Bấm nút bên dưới — nếu không chuỗi sẽ bị reset về 0.",
+      "button": "🧊 Dùng hồi sinh"
+    },
+    {
+      "title": "😱 Chuỗi sắp reset rồi!",
+      "body": "Ê! Chuỗi 🔥 **${count}** ngày ở **${guild}** của bạn đang lung lay đó.\n\nDùng một lượt hồi sinh để cứu nó ngay — không thì về 0 luôn!",
+      "button": "⚡ Chích điện chuỗi nào"
+    },
+    {
+      "title": "🚑 Cấp cứu chuỗi!",
+      "body": "Chuỗi **${count}** ngày của bạn tại **${guild}** đang hấp hối!\n\nCòn kịp cứu đấy — bấm nút bên dưới để dùng một lượt hồi sinh nhé.",
+      "button": "💉 Cứu chuỗi ngay"
     }
   ],
   "streak_lost": [
@@ -18,11 +29,6 @@
     "⚰️ ${user}, chuỗi 🔥 **${count}** ngày đã yên nghỉ tại **${guild}**.\n\nĐứng dậy và lập chuỗi mới thôi nào! 🚀"
   ],
   "revive": {
-    "button_label": [
-      "🧊 Dùng hồi sinh",
-      "⚡ Chích điện chuỗi nào",
-      "💉 Cứu chuỗi ngay"
-    ],
     "not_yours": [
       "Lượt hồi sinh này không phải của bạn.",
       "Ê, đây đâu phải chuỗi của bạn! 😅"
@@ -41,7 +47,7 @@
   },
   "leaderboard": {
     "title": "🏆 Bảng xếp hạng chuỗi — ${guild}",
-    "row": "${medal} ${name} — 🔥 ${count}",
+    "row": "**${rank}. ${name}** — 🔥 ${count}",
     "empty": "Chưa có chuỗi nào."
   },
   "voice_join": [

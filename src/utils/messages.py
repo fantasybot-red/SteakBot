@@ -6,7 +6,7 @@ groups, and rendered with ``string.Template`` (``${name}``) substitution. This
 keeps copy out of the code and makes it easy to tweak wording or translate.
 
 Keys are **dotted paths** into the JSON, e.g. ``"leaderboard.title"`` or
-``"revive.button_label"``.
+``"revive.used"``.
 
 A value may be:
   * a string                    -> ``messages.get(key, **kwargs)``
@@ -19,9 +19,9 @@ A value may be:
 Usage:
     from utils import messages
 
-    messages.get("revive.button_label", revives=2)
-    title_body = messages.group("reminder", guild="X", count=12, hours=2)
-    embed_title = title_body["title"]
+    messages.get("revive.expired")
+    offer = messages.group("offer_revive", guild="X", count=12)
+    embed_title, button_label = offer["title"], offer["button"]
 """
 
 import json

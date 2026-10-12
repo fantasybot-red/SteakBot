@@ -13,10 +13,13 @@ from datetime import date
 
 import discord
 
-from utils.messages import messages
 from utils.streak_service import streak_service
 
 CUSTOM_ID_PREFIX = "revive"
+
+#: Fallback label for a button rebuilt after a restart (its original label is
+#: not stored in the custom_id). Cosmetic only — the first click disables it.
+DEFAULT_BUTTON_LABEL = "🧊 Dùng hồi sinh"
 
 
 def make_custom_id(guild_id: int, user_id: int, missed_day: date) -> str:
@@ -32,18 +35,19 @@ class ReviveButton(discord.ui.DynamicItem[discord.ui.Button], template=r"revive:
         guild_id: int,
         user_id: int,
         missed_day: date,
-        revives_left: int,
-        disabled: bool = False,
+        label: str | None = None,
     ) -> None:
         self.guild_id = guild_id
         self.user_id = user_id
         self.missed_day = missed_day
         super().__init__(
             discord.ui.Button(
-                label=messages.get("revive.button_label"),
+                # The label is chosen alongside the offer_revive message so the
+                # two stay paired; on a rebuilt (restart) button it is cosmetic
+                # only, since the first click disables it anyway.
+                label=label or DEFAULT_BUTTON_LABEL,
                 style=discord.ButtonStyle.success,
                 custom_id=make_custom_id(guild_id, user_id, missed_day),
-                disabled=disabled or revives_left <= 0,
             )
         )
 
@@ -53,7 +57,6 @@ class ReviveButton(discord.ui.DynamicItem[discord.ui.Button], template=r"revive:
             guild_id=int(match["gid"]),
             user_id=int(match["uid"]),
             missed_day=date.fromisoformat(match["day"]),
-            revives_left=1,  # label is replaced on click anyway
         )
 
     async def callback(self, interaction: discord.Interaction) -> None:
@@ -93,9 +96,9 @@ class ReviveView(discord.ui.View):
 
 
 def build_revive_view(
-    guild_id: int, user_id: int, missed_day: date, revives_left: int
+    guild_id: int, user_id: int, missed_day: date, label: str | None = None
 ) -> discord.ui.View:
     """Build a fresh view carrying a revive button for a specific DM."""
     view = discord.ui.View(timeout=None)
-    view.add_item(ReviveButton(guild_id, user_id, missed_day, revives_left))
+    view.add_item(ReviveButton(guild_id, user_id, missed_day, label))
     return view

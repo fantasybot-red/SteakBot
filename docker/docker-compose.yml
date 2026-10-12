@@ -1,0 +1,41 @@
+services:
+  # Percona Server for MongoDB — a drop-in, MongoDB-compatible database that
+  # ships ARM64 (aarch64) builds, so it runs on a Raspberry Pi 4B. The official
+  # `mongo` image (5.0+) does NOT, because the Pi 4B's Cortex-A72 CPU is
+  # ARMv8.0-A, below MongoDB's ARMv8.2-A requirement.
+  mongo:
+    image: percona/percona-server-mongodb:7.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  bot:
+    build:
+      # Build context is the project root (one level up from this file).
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      # Required
+      TOKEN: ${TOKEN}
+      # Database (points at the mongo service above)
+      MONGO_URI: mongodb://mongo:27017
+      MONGO_DB: ${MONGO_DB:-streakbot}
+      # Streak logic (override as needed)
+      PREFIX: ${PREFIX:-!}
+      TIMEZONE: ${TIMEZONE:-Asia/Bangkok}
+      STREAK_THRESHOLD: ${STREAK_THRESHOLD:-3}
+      REVIVE_MAX: ${REVIVE_MAX:-3}
+      REMINDER_HOURS_BEFORE: ${REMINDER_HOURS_BEFORE:-2,1}
+      FLUSH_INTERVAL_MINUTES: ${FLUSH_INTERVAL_MINUTES:-5}
+
+volumes:
+  mongo-data:

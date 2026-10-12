@@ -1,0 +1,63 @@
+{
+  "reminder": [
+    "⏰ ${user} ơi! Chuỗi của bạn ở **${guild}** đang là 🔥 **${count}** ngày, nhưng hôm nay bạn chưa hoạt động.\n\n⏳ Hết ngày ${deadline}.\n👉 Nhắn một tin hoặc vào voice để giữ chuỗi nhé!",
+    "🔥 Ê ${user}! Chuỗi 🔥 **${count}** ngày ở **${guild}** sắp đi tong rồi đó.\n\n⏳ Hạn chót ${deadline} — nhắn một câu hoặc vào voice ngay kẻo tiếc!",
+    "😱 ${user} đừng để công sức đổ sông đổ biển! Chuỗi **${count}** ngày của bạn tại **${guild}** đang chờ bạn.\n\n⏳ Hết ngày ${deadline} — hoạt động một chút nào! 🔥",
+    "⏳ ${user} ơi, 🔥 ${count} ngày hoạt động liên tục mà bỏ hôm nay thì phí lắm!\n\nChuỗi ở **${guild}** sẽ reset ${deadline}. 👉 Nhắn tin hoặc vào voice ngay đi bạn ơi!"
+  ],
+
+  "offer_revive": {
+    "title": "💔 Bạn đã bỏ lỡ một ngày!",
+    "body": "Chuỗi của bạn ở **${guild}** (🔥 **${count}** ngày) đang gặp nguy hiểm!\n\nBạn có thể dùng một lượt hồi sinh để cứu nó. Bấm nút bên dưới — nếu không chuỗi sẽ bị reset về 0."
+  },
+
+  "streak_lost": [
+    "💀 ${user}, chuỗi 🔥 **${count}** ngày của bạn ở **${guild}** đã mất và bạn đã dùng hết lượt hồi sinh.\n\nBắt đầu lại nào — bạn làm được mà! 💪",
+    "💔 Rồi xong ${user}... chuỗi **${count}** ngày ở **${guild}** đã chính thức về 0.\n\nKhông sao, ai cũng có lúc vấp. Làm lại từ hôm nay nhé! 🔥",
+    "😢 Tiếc quá ${user}! **${count}** ngày chuỗi tại **${guild}** đã bay màu.\n\nHết lượt hồi sinh rồi — nhưng hành trình mới bắt đầu lại từ đây. 💪",
+    "⚰️ ${user}, chuỗi 🔥 **${count}** ngày đã yên nghỉ tại **${guild}**.\n\nĐứng dậy và lập chuỗi mới thôi nào! 🚀"
+  ],
+
+  "revive": {
+    "button_label": [
+      "🧊 Dùng hồi sinh",
+      "⚡ Chích điện chuỗi nào",
+      "💉 Cứu chuỗi ngay"
+    ],
+    "not_yours": [
+      "Lượt hồi sinh này không phải của bạn.",
+      "Ê, đây đâu phải chuỗi của bạn! 😅"
+    ],
+    "expired": [
+      "Lượt hồi sinh này đã hết hạn hoặc đã được xử lý (có thể bạn đã hoạt động trở lại rồi).",
+      "Muộn rồi bạn ơi — lượt hồi sinh này không còn dùng được nữa."
+    ],
+    "used": "🧊 Đã dùng hồi sinh! Chuỗi 🔥 **${count}** ngày của bạn đã được cứu.\nBạn còn **${revives}** lượt hồi sinh — nhớ hoạt động lại trong hôm nay nhé!",
+    "none_left": "💀 Bạn đã hết lượt hồi sinh. Chuỗi của bạn đã mất — làm lại từ đầu thôi!"
+  },
+
+  "streak_card": {
+    "title": "🔥 Chuỗi của ${name}",
+    "value": "${status} ${count} ngày\nKỷ lục: ${best}",
+    "building": "🌱 Chưa thành chuỗi — hãy hoạt động liên tục vài ngày nữa để chuỗi chính thức xuất hiện!"
+  },
+
+  "leaderboard": {
+    "title": "🏆 Bảng xếp hạng chuỗi — ${guild}",
+    "row": "${medal} ${name} — 🔥 ${count}",
+    "empty": "Chưa có chuỗi nào."
+  },
+
+  "voice_join": [
+    "🔥 ${user} vừa vào voice — chuỗi hoạt động lên **${count}** ngày!",
+    "🎧 ${user} đã điểm danh voice hôm nay! Chuỗi: 🔥 **${count}** ngày.",
+    "🔊 ${user} vào voice rồi nè — giữ vững chuỗi 🔥 **${count}** ngày nhé!",
+    "✨ ${user} vừa nối dài chuỗi lên 🔥 **${count}** ngày nhờ vào voice!"
+  ],
+
+  "common": {
+    "no_permission": "Bạn không có quyền thực hiện thao tác này.",
+    "guild_fallback": "server của bạn",
+    "ready_log": "StreakBot đã đăng nhập: ${user} (timezone ${tz})"
+  }
+}
